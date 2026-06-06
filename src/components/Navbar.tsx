@@ -4,8 +4,15 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
+const navLinks = [
+  { href: "/cradle", label: "Cradle" },
+  { href: "/tilt", label: "Tilt" },
+  { href: "/growing-light", label: "Growing Light" },
+];
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const isProjectPage = pathname !== "/";
 
@@ -15,7 +22,11 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const textColor = scrolled
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  const textColor = scrolled || mobileOpen
     ? "text-charcoal"
     : isProjectPage
       ? "text-white"
@@ -24,7 +35,7 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+        scrolled || mobileOpen
           ? "bg-cream/90 backdrop-blur-sm shadow-sm"
           : "bg-transparent"
       }`}
@@ -36,12 +47,10 @@ export function Navbar() {
         >
           Clara Chemin
         </Link>
+
+        {/* Desktop nav */}
         <ul className="hidden items-center gap-8 sm:flex">
-          {[
-            { href: "/cradle", label: "Cradle" },
-            { href: "/tilt", label: "Tilt" },
-            { href: "/growing-light", label: "Growing Light" },
-          ].map((link) => (
+          {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
@@ -61,7 +70,43 @@ export function Navbar() {
             </li>
           ))}
         </ul>
+
+        {/* Mobile hamburger */}
+        <button
+          type="button"
+          aria-label="Toggle menu"
+          className={`sm:hidden ${textColor}`}
+          onClick={() => setMobileOpen((v) => !v)}
+        >
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            {mobileOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
       </nav>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="border-t border-charcoal/10 bg-cream/95 backdrop-blur-sm sm:hidden">
+          <ul className="flex flex-col gap-4 px-6 py-6">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className={`text-sm tracking-wide text-charcoal ${
+                    pathname === link.href ? "font-semibold" : ""
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </header>
   );
 }

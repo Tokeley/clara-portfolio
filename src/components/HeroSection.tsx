@@ -13,8 +13,8 @@ const strips = [
 export function HeroSection() {
   return (
     <section className="relative flex min-h-screen items-center bg-cream pt-20">
-      <div className="mx-auto flex w-full max-w-7xl items-end gap-16 px-6 pb-20">
-        <div className="flex w-[42%] shrink-0 gap-4">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-10 px-6 pb-20 md:flex-row md:items-end md:gap-16">
+        <div className="flex w-full gap-4 md:w-[42%] md:shrink-0">
           {strips.map((strip, i) => (
             <motion.div
               key={i}
@@ -35,15 +35,15 @@ export function HeroSection() {
         </div>
 
         <motion.div
-          className="flex flex-1 flex-col items-end text-right"
+          className="flex flex-1 flex-col items-center text-center md:items-end md:text-right"
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
         >
-          <h1 className="text-7xl font-bold tracking-tight text-charcoal lg:text-8xl">
+          <h1 className="text-5xl font-bold tracking-tight text-charcoal sm:text-7xl lg:text-8xl">
             {siteContent.title}
           </h1>
-          <p className="mt-2 text-2xl font-light tracking-wide text-charcoal/60 lg:text-3xl">
+          <p className="mt-2 text-xl font-light tracking-wide text-charcoal/60 sm:text-2xl lg:text-3xl">
             {siteContent.name}
           </p>
         </motion.div>

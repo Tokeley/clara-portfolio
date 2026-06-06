@@ -34,7 +34,7 @@ function OverviewSection() {
       <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 md:flex-row md:items-stretch">
         {/* Left: large close-up portrait */}
         <ScrollReveal className="w-full md:w-[46%]">
-          <div className="relative h-full min-h-[520px] w-full overflow-hidden">
+          <div className="relative h-full min-h-[320px] w-full overflow-hidden sm:min-h-[520px]">
             <Image
               src="/images/growing-light/overview-closeup.png"
               alt="Growing Light — close-up"
@@ -46,9 +46,9 @@ function OverviewSection() {
         </ScrollReveal>
 
         {/* Right: thumbnails | logo/text side by side */}
-        <div className="flex w-full gap-6 md:w-[54%]">
+        <div className="flex w-full flex-col gap-6 sm:flex-row md:w-[54%]">
           {/* Three numbered stage thumbnails */}
-          <div className="flex w-[62%] shrink-0 flex-col gap-3">
+          <div className="flex w-full shrink-0 flex-col gap-3 sm:w-[62%]">
             {stageImages.map(({ src, alt }, i) => (
               <div key={i} className="relative">
                 <div className="relative aspect-video w-full overflow-hidden bg-grey-light">
@@ -72,7 +72,7 @@ function OverviewSection() {
               width={240}
               height={120}
               unoptimized
-              className="h-auto w-full"
+              className="h-auto w-full max-w-[240px]"
             />
             <div className="flex flex-col gap-3">
               <p className="text-sm leading-relaxed text-charcoal/75">
@@ -115,7 +115,7 @@ function BriefSection() {
               {growingLightContent.brief.heading}
             </h2>
           </ScrollReveal>
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             {growingLightContent.brief.items.map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden">

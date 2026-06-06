@@ -30,9 +30,9 @@ const overviewViews = [
 function OverviewSection() {
   return (
     <section className="overflow-hidden bg-[#666]">
-      <div className="flex min-h-[520px]">
+      <div className="flex min-h-[520px] flex-col md:flex-row">
         {/* Left: full-bleed portrait */}
-        <ScrollReveal className="relative w-[33%] shrink-0">
+        <ScrollReveal className="relative min-h-[300px] w-full shrink-0 md:w-[33%]">
           <Image
             src="/images/tilt/overview-portrait.png"
             alt="Tilt product"
@@ -43,11 +43,11 @@ function OverviewSection() {
         </ScrollReveal>
 
         {/* Right: thumbnails + logo/text */}
-        <div className="flex flex-1 items-center gap-8 px-10 py-12">
-          {/* Thumbnails — numbers already baked into images */}
+        <div className="flex flex-1 flex-col gap-8 px-6 py-10 sm:flex-row sm:items-center sm:gap-8 sm:px-10 sm:py-12">
+          {/* Thumbnails */}
           <ScrollReveal className="flex shrink-0 flex-col gap-4">
             {overviewViews.map((src, i) => (
-              <div key={i} className="w-72 overflow-hidden">
+              <div key={i} className="w-full overflow-hidden sm:w-72">
                 <Image
                   src={src}
                   alt={`Tilt view ${i + 1}`}
@@ -105,7 +105,7 @@ function BriefSection() {
           <ScrollReveal>
             <h2 className="mb-10 text-5xl font-bold tracking-tight text-charcoal md:text-6xl">{tiltContent.brief.heading}</h2>
           </ScrollReveal>
-          <div className="grid grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
             {tiltContent.brief.items.map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>
                 <div className="relative aspect-[3/2] w-full overflow-hidden">

@@ -46,7 +46,7 @@ function OverviewSection() {
         </ScrollReveal>
 
         {/* Right: content */}
-        <div className="flex w-full flex-col justify-center px-10 py-16 md:w-[60%]">
+        <div className="flex w-full flex-col justify-center px-6 py-10 sm:px-10 sm:py-16 md:w-[60%]">
           <ScrollReveal>
             <h2 className="font-serif text-6xl font-normal text-[#2C5F5C]">
               cradle
@@ -66,7 +66,7 @@ function OverviewSection() {
             </p>
           </ScrollReveal>
 
-          <div className="mt-10 grid grid-cols-3 gap-6 pb-10">
+          <div className="mt-10 grid grid-cols-1 gap-6 pb-10 sm:grid-cols-3">
             {cradleContent.steps.map((step, i) => (
               <ScrollReveal key={step.number} delay={0.3 + i * 0.1} className="flex flex-col">
                 <div className="flex flex-1 flex-col">
@@ -126,7 +126,7 @@ function ProblemSection() {
             </h2>
           </ScrollReveal>
 
-          <div className="mt-10 grid grid-cols-3 gap-5">
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
             {problemCaptions.map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.12}>
                 <div className="flex flex-col">
@@ -217,12 +217,12 @@ function ProductDetailSection() {
           unoptimized
           className="object-cover"
         />
-        <div className="absolute left-10 right-10 top-10 flex items-start gap-6">
-          <p className="max-w-[260px] shrink-0 text-sm font-bold uppercase leading-relaxed tracking-wider text-white">
+        <div className="absolute left-4 right-4 top-4 flex flex-col gap-4 sm:left-10 sm:right-10 sm:top-10 sm:flex-row sm:items-start sm:gap-6">
+          <p className="max-w-[260px] shrink-0 text-xs font-bold uppercase leading-relaxed tracking-wider text-white sm:text-sm">
             {cradleContent.productDetail.left}
           </p>
-          <div className="mt-[0.5em] h-px flex-1 bg-white opacity-80" />
-          <p className="max-w-[320px] shrink-0 text-right text-sm font-bold uppercase leading-relaxed tracking-wider text-white">
+          <div className="mt-[0.5em] hidden h-px flex-1 bg-white opacity-80 sm:block" />
+          <p className="max-w-[320px] shrink-0 text-right text-xs font-bold uppercase leading-relaxed tracking-wider text-white sm:text-sm">
             {cradleContent.productDetail.right}
           </p>
         </div>
@@ -242,12 +242,12 @@ function PackagingSection() {
           unoptimized
           className="object-cover"
         />
-        <div className="absolute bottom-10 left-10 right-10 flex items-end gap-6">
-          <p className="max-w-[260px] shrink-0 text-sm font-bold uppercase leading-relaxed tracking-wider text-white">
+        <div className="absolute bottom-4 left-4 right-4 flex flex-col gap-4 sm:bottom-10 sm:left-10 sm:right-10 sm:flex-row sm:items-end sm:gap-6">
+          <p className="max-w-[260px] shrink-0 text-xs font-bold uppercase leading-relaxed tracking-wider text-white sm:text-sm">
             {cradleContent.packaging.left}
           </p>
-          <div className="mb-[0.5em] h-px flex-1 bg-white opacity-80" />
-          <p className="max-w-[320px] shrink-0 text-right text-sm font-bold uppercase leading-relaxed tracking-wider text-white">
+          <div className="mb-[0.5em] hidden h-px flex-1 bg-white opacity-80 sm:block" />
+          <p className="max-w-[320px] shrink-0 text-right text-xs font-bold uppercase leading-relaxed tracking-wider text-white sm:text-sm">
             {cradleContent.packaging.right}
           </p>
         </div>

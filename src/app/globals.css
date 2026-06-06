@@ -14,6 +14,7 @@ body {
   background: var(--color-cream);
   color: var(--color-charcoal);
   font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
 html {

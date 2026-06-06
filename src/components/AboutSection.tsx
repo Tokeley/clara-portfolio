@@ -9,17 +9,17 @@ export function AboutSection() {
 
   return (
     <section className="bg-white py-16">
-      <div className="mx-auto grid max-w-7xl grid-cols-3 gap-10 px-6">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 md:grid-cols-3">
         {/* Cream card: heading + photo + bio — spans 2 cols to align with CVSection */}
-        <ScrollReveal direction="up" className="col-span-2">
-          <div className="rounded-sm bg-cream px-10 py-10">
-            <h2 className="text-6xl font-bold leading-none tracking-tight text-charcoal">
+        <ScrollReveal direction="up" className="md:col-span-2">
+          <div className="rounded-sm bg-cream px-6 py-8 sm:px-10 sm:py-10">
+            <h2 className="text-4xl font-bold leading-none tracking-tight text-charcoal sm:text-6xl">
               {about.heading}
             </h2>
             <div className="mt-3 h-px w-52 bg-charcoal" />
 
-            <div className="mt-8 flex items-center gap-10">
-              <div className="relative aspect-[3/4] w-56 shrink-0 overflow-hidden rounded-sm">
+            <div className="mt-8 flex flex-col items-center gap-8 sm:flex-row sm:items-center sm:gap-10">
+              <div className="relative aspect-[3/4] w-44 shrink-0 overflow-hidden rounded-sm sm:w-56">
                 <Image
                   src="/images/main/portrait.png"
                   alt="Clara Chemin portrait"
