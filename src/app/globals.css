@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #FAF5EE;
+  --color-cream-dark: #F0EBE3;
+  --color-charcoal: #1A1A1A;
+  --color-grey-light: #E8E8E8;
+  --color-grey-mid: #D0D0D0;
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-dm-serif);
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
