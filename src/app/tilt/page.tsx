@@ -185,7 +185,7 @@ const productProcessImages = [
 
 function ProductProcessSection() {
   return (
-    <section className="bg-white py-20">
+    <section className="flex min-h-screen flex-col justify-center bg-white py-20">
       <div className="mx-auto max-w-7xl px-6">
         <ScrollReveal>
           <h2 className="mb-10 text-4xl font-bold tracking-tight text-charcoal md:text-5xl">
