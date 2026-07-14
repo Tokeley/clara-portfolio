@@ -12,19 +12,24 @@ const navLinks = [
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const isProjectPage = pathname !== "/";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 40);
+      // Hide when scrolling down past the header, reveal on any scroll up
+      setHidden(y > 80 && y > lastY);
+      lastY = y;
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
 
   const textColor = scrolled || mobileOpen
     ? "text-charcoal"
@@ -35,6 +40,8 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        hidden && !mobileOpen ? "-translate-y-full" : "translate-y-0"
+      } ${
         scrolled || mobileOpen
           ? "bg-cream/90 backdrop-blur-sm shadow-sm"
           : "bg-transparent"
@@ -96,6 +103,7 @@ export function Navbar() {
               <li key={link.href}>
                 <Link
                   href={link.href}
+                  onClick={() => setMobileOpen(false)}
                   className={`text-sm tracking-wide text-charcoal ${
                     pathname === link.href ? "font-semibold" : ""
                   }`}

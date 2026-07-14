@@ -7,16 +7,16 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { siteContent } from "@/lib/content";
 
 const projectImages = [
-  "/images/cradle/hero.png",
-  "/images/tilt/1.png",
-  "/images/growing-light/1.png",
+  "/images/cradle/overview.jpg",
+  "/images/tilt/1.jpg",
+  "/images/growing-light/1.jpg",
 ];
 
 const metaFields = ["product", "material", "processes", "date"] as const;
 
 export function ProjectGrid() {
   return (
-    <section className="bg-cream py-24">
+    <section className="bg-white py-24">
       <div className="mx-auto grid max-w-7xl gap-8 px-6 sm:grid-cols-2 lg:grid-cols-3">
         {siteContent.projects.map((project, i) => (
           <ScrollReveal key={project.slug} direction="up" delay={i * 0.12}>
@@ -27,10 +27,10 @@ export function ProjectGrid() {
               >
                 <hr className="border-charcoal/20" />
                 <div className="flex items-baseline justify-between py-3">
-                  <span className="text-xs tracking-wider text-charcoal/50">
+                  <span className="text-xl font-bold tracking-tight text-charcoal">
                     ({project.number})
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-charcoal">
+                  <span className="text-xl font-bold uppercase tracking-tight text-charcoal">
                     {project.title}
                   </span>
                 </div>
@@ -45,14 +45,14 @@ export function ProjectGrid() {
                   />
                 </div>
 
-                <table className="mt-4 w-full">
+                <table className="mt-3 w-full">
                   <tbody>
                     {metaFields.map((field) => (
-                      <tr key={field} className="border-b border-cream-dark last:border-b-0">
-                        <td className="py-1.5 text-[10px] font-bold uppercase tracking-wider text-charcoal/40">
+                      <tr key={field} className="border-b border-charcoal/20 last:border-b-0">
+                        <td className="py-0.5 text-[10px] font-bold uppercase tracking-wider text-charcoal">
                           {field}
                         </td>
-                        <td className="py-1.5 text-right text-[10px] uppercase tracking-wide text-charcoal/70">
+                        <td className="py-0.5 text-right text-[10px] font-bold uppercase tracking-wide text-charcoal">
                           {project[field]}
                         </td>
                       </tr>

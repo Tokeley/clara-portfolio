@@ -3,38 +3,47 @@
 import Image from "next/image";
 import { tiltContent } from "@/lib/content";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { FullBleedImage } from "@/components/FullBleedImage";
 import { ProjectNav } from "@/components/Footer";
 
 function HeroSection() {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <Image
-        src="/images/tilt/1.png"
+        src="/images/tilt/1.jpg"
         alt="Tilt hero"
         fill
         priority
         unoptimized
         className="object-cover"
       />
+      <div className="absolute inset-x-0 top-28 mx-auto max-w-7xl px-6 lg:top-36">
+        <Image
+          src="/Logos/Tilt Logo .svg"
+          alt="Tilt"
+          width={232}
+          height={85}
+          unoptimized
+          className="h-auto w-[clamp(9rem,18vw,20.8rem)]"
+        />
+      </div>
     </section>
   );
 }
 
 const overviewViews = [
-  "/images/tilt/overview-view-1.png",
-  "/images/tilt/overview-view-2.png",
-  "/images/tilt/overview-view-3.png",
+  "/images/tilt/overview-view-1.jpg",
+  "/images/tilt/overview-view-2.jpg",
+  "/images/tilt/overview-view-3.jpg",
 ];
 
 function OverviewSection() {
   return (
-    <section className="overflow-hidden bg-[#666]">
+    <section className="overflow-hidden bg-grey-dark">
       <div className="flex min-h-[520px] flex-col md:flex-row">
         {/* Left: full-bleed portrait */}
         <ScrollReveal className="relative min-h-[300px] w-full shrink-0 md:w-[33%]">
           <Image
-            src="/images/tilt/overview-portrait.png"
+            src="/images/tilt/overview-portrait.jpg"
             alt="Tilt product"
             fill
             unoptimized
@@ -43,7 +52,7 @@ function OverviewSection() {
         </ScrollReveal>
 
         {/* Right: thumbnails + logo/text */}
-        <div className="flex flex-1 flex-col gap-8 px-6 py-10 sm:flex-row sm:items-center sm:gap-8 sm:px-10 sm:py-12">
+        <div className="flex flex-1 flex-col gap-8 px-6 py-10 sm:flex-row sm:items-stretch sm:gap-8 sm:px-10 sm:py-12">
           {/* Thumbnails */}
           <ScrollReveal className="flex shrink-0 flex-col gap-4">
             {overviewViews.map((src, i) => (
@@ -51,8 +60,8 @@ function OverviewSection() {
                 <Image
                   src={src}
                   alt={`Tilt view ${i + 1}`}
-                  width={800}
-                  height={533}
+                  width={1280}
+                  height={853}
                   unoptimized
                   className="h-auto w-full"
                 />
@@ -60,23 +69,24 @@ function OverviewSection() {
             ))}
           </ScrollReveal>
 
-          {/* Logo + description */}
+          {/* Logo + description, bottom-aligned with thumbnails */}
           <ScrollReveal delay={0.15} className="flex-1">
-            <div className="relative mb-6 h-20 w-40">
+            <div className="flex h-full flex-col justify-end pb-1">
               <Image
-                src="/images/tilt/logo.png"
-                alt="Tilt logo"
-                fill
+                src="/Logos/Tilt Logo .svg"
+                alt="Tilt"
+                width={217}
+                height={188}
                 unoptimized
-                className="object-contain object-left"
+                className="mb-6 h-36 w-auto self-start"
               />
+              <p className="max-w-xs text-base font-medium leading-relaxed text-white/80">
+                {tiltContent.description}
+              </p>
+              <p className="mt-4 max-w-xs text-base font-medium leading-relaxed text-white/80">
+                {tiltContent.descriptionExtended}
+              </p>
             </div>
-            <p className="max-w-xs text-sm leading-relaxed text-white/80">
-              {tiltContent.description}
-            </p>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/80">
-              {tiltContent.descriptionExtended}
-            </p>
           </ScrollReveal>
         </div>
       </div>
@@ -85,9 +95,9 @@ function OverviewSection() {
 }
 
 const briefImages = [
-  "/images/tilt/brief-1.png",
-  "/images/tilt/brief-2.png",
-  "/images/tilt/brief-3.png",
+  "/images/tilt/brief-1.jpg",
+  "/images/tilt/brief-2.jpg",
+  "/images/tilt/brief-3.jpg",
 ];
 
 function renderBold(text: string) {
@@ -108,7 +118,7 @@ function BriefSection() {
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
             {tiltContent.brief.items.map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>
-                <div className="relative aspect-[3/2] w-full overflow-hidden">
+                <div className="relative aspect-square w-full overflow-hidden">
                   <Image
                     src={briefImages[i]}
                     alt={item.replace(/\*\*/g, "")}
@@ -125,13 +135,13 @@ function BriefSection() {
           </div>
         </div>
         <ScrollReveal direction="right" delay={0.2}>
-          <div className="flex flex-col bg-gray-100 p-8">
+          <div className="flex h-full flex-col bg-grey-light p-8">
             {tiltContent.brief.sidebar.map((para, i) => (
               <p key={i} className="mb-5 text-sm leading-relaxed text-charcoal last:mb-0">
                 {renderBold(para)}
               </p>
             ))}
-            <h3 className="mt-8 text-right text-5xl font-bold tracking-tight text-charcoal md:text-6xl">
+            <h3 className="mt-auto pt-8 text-right text-5xl font-bold tracking-tight text-charcoal md:text-6xl">
               Constraints
             </h3>
           </div>
@@ -143,20 +153,20 @@ function BriefSection() {
 
 function ProcessSection() {
   return (
-    <section className="bg-neutral-800">
+    <section className="bg-white">
       <Image
-        src="/images/tilt/4.png"
+        src="/images/tilt/4.jpg"
         alt="Tilt process timeline part 1"
-        width={1400}
-        height={800}
+        width={3000}
+        height={1687}
         unoptimized
         className="block h-auto w-full"
       />
       <Image
-        src="/images/tilt/5.png"
+        src="/images/tilt/5.jpg"
         alt="Tilt process timeline part 2"
-        width={1400}
-        height={800}
+        width={3000}
+        height={1687}
         unoptimized
         className="block h-auto w-full"
       />
@@ -165,12 +175,12 @@ function ProcessSection() {
 }
 
 const productProcessImages = [
-  "/images/tilt/product-process-1.png",
-  "/images/tilt/product-process-2.png",
-  "/images/tilt/product-process-3.png",
-  "/images/tilt/product-process-4.png",
-  "/images/tilt/product-process-5.png",
-  "/images/tilt/product-process-6.png",
+  "/images/tilt/product-process-1.jpg",
+  "/images/tilt/product-process-2.jpg",
+  "/images/tilt/product-process-3.jpg",
+  "/images/tilt/product-process-4.jpg",
+  "/images/tilt/product-process-5.jpg",
+  "/images/tilt/product-process-6.jpg",
 ];
 
 function ProductProcessSection() {
@@ -194,7 +204,7 @@ function ProductProcessSection() {
                   className="object-contain"
                 />
               </div>
-              <p className="mt-3 text-xs font-bold uppercase leading-relaxed tracking-wide text-charcoal">
+              <p className="mt-3 font-label text-xs font-bold uppercase leading-relaxed tracking-wide text-charcoal">
                 {caption}
               </p>
             </ScrollReveal>
@@ -207,34 +217,38 @@ function ProductProcessSection() {
 
 function BodyTextSection() {
   return (
-    <FullBleedImage
-      src="/images/tilt/7.png"
-      alt="Tilt detail"
-      aspectRatio="21/9"
-      overlayTextSize="text-base"
-      overlays={[
-        { text: tiltContent.bodyText.left, position: "bottom-left" },
-        { text: tiltContent.bodyText.right, position: "top-right" },
-      ]}
-    />
+    <section className="relative h-screen w-full overflow-hidden bg-black">
+      <Image
+        src="/images/tilt/7.jpg"
+        alt="Tilt explores the body in movement"
+        fill
+        unoptimized
+        className="object-cover"
+      />
+      <div className="absolute inset-x-0 top-4 mx-auto flex max-w-7xl flex-col gap-4 px-6 sm:top-10 sm:flex-row sm:items-start sm:gap-6">
+        <p className="text-stroke-bold max-w-[260px] shrink-0 font-label text-xs font-bold uppercase leading-relaxed tracking-wider text-white sm:text-sm">
+          {tiltContent.bodyText.left}
+        </p>
+        <div className="mt-[0.5em] hidden h-px flex-1 bg-white opacity-80 sm:block" />
+        <p className="text-stroke-bold max-w-[320px] shrink-0 text-left sm:text-right font-label text-xs font-bold uppercase leading-relaxed tracking-wider text-white sm:text-sm">
+          {tiltContent.bodyText.right}
+        </p>
+      </div>
+    </section>
   );
 }
 
 function TriptychSection() {
   return (
     <section className="bg-black py-0">
-      <ScrollReveal>
-        <div className="relative w-full">
-          <Image
-            src="/images/tilt/8.png"
-            alt="Tilt triptych"
-            width={1400}
-            height={500}
-            unoptimized
-            className="h-auto w-full"
-          />
-        </div>
-      </ScrollReveal>
+      <Image
+        src="/images/tilt/8.jpg"
+        alt="Tilt triptych"
+        width={2560}
+        height={1440}
+        unoptimized
+        className="h-auto w-full"
+      />
     </section>
   );
 }
@@ -242,16 +256,14 @@ function TriptychSection() {
 function PoemSection() {
   return (
     <section>
-      <ScrollReveal>
-        <Image
-          src="/images/tilt/9.png"
-          alt="Tilt poem detail"
-          width={1920}
-          height={1080}
-          unoptimized
-          className="block h-auto w-full"
-        />
-      </ScrollReveal>
+      <Image
+        src="/images/tilt/9.jpg"
+        alt="Tilt poem detail"
+        width={2560}
+        height={1440}
+        unoptimized
+        className="block h-auto w-full"
+      />
     </section>
   );
 }
@@ -259,16 +271,14 @@ function PoemSection() {
 function BookletSection() {
   return (
     <section>
-      <ScrollReveal>
-        <Image
-          src="/images/tilt/10.png"
-          alt="Tilt exhibition booklet"
-          width={1920}
-          height={1080}
-          unoptimized
-          className="block h-auto w-full"
-        />
-      </ScrollReveal>
+      <Image
+        src="/images/tilt/10.jpg"
+        alt="Tilt exhibition booklet"
+        width={2560}
+        height={1440}
+        unoptimized
+        className="block h-auto w-full"
+      />
     </section>
   );
 }

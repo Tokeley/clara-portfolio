@@ -3,40 +3,67 @@
 import Image from "next/image";
 import { cradleContent } from "@/lib/content";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { FullBleedImage } from "@/components/FullBleedImage";
-import { VideoPlaceholder } from "@/components/VideoPlaceholder";
+import { ProjectVideo } from "@/components/ProjectVideo";
 import { ProjectNav } from "@/components/Footer";
 
 function HeroSection() {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <Image
-        src="/images/cradle/hero.png"
+        src="/images/cradle/hero.jpg"
         alt="Cradle hero"
         fill
         priority
         unoptimized
         className="object-cover"
       />
+      <div className="absolute inset-x-0 top-28 mx-auto flex max-w-7xl flex-col items-start gap-6 px-6 lg:top-36 lg:flex-row lg:items-start lg:justify-between lg:gap-0">
+        <Image
+          src="/Logos/Cradle Logo White.svg"
+          alt="Cradle"
+          width={232}
+          height={85}
+          unoptimized
+          className="h-auto w-72 sm:w-[26rem]"
+        />
+        <div className="flex items-center gap-6 sm:gap-12">
+          <Image
+            src="/Logos/Lexus Logo.svg"
+            alt="Lexus Design Awards 2025, 1st Place"
+            width={798}
+            height={299}
+            unoptimized
+            className="h-auto w-48 sm:w-64"
+          />
+          <Image
+            src="/Logos/NZDW Logo.svg"
+            alt="Displayed at New Zealand Design Week"
+            width={551}
+            height={275}
+            unoptimized
+            className="h-auto w-36 sm:w-48"
+          />
+        </div>
+      </div>
     </section>
   );
 }
 
 const stepImages = [
-  "/images/cradle/step1.png",
-  "/images/cradle/step2.png",
-  "/images/cradle/step3.png",
+  "/images/cradle/step1.jpg",
+  "/images/cradle/step2.jpg",
+  "/images/cradle/step3.jpg",
 ];
 
 function OverviewSection() {
   return (
     <section className="bg-white py-20">
-      <div className="mx-auto flex max-w-7xl flex-col md:flex-row">
-        {/* Left: tall photo, no padding, flush to edge */}
-        <ScrollReveal className="w-full shrink-0 md:w-[40%]" direction="left">
-          <div className="relative aspect-[3/4] w-full overflow-hidden md:aspect-auto md:h-full md:min-h-[600px]">
+      <div className="mx-auto flex max-w-7xl flex-col px-6 md:flex-row md:items-stretch">
+        {/* Left: tall photo */}
+        <ScrollReveal className="hidden w-full shrink-0 md:block md:h-auto md:w-[40%]" direction="left">
+          <div className="relative aspect-[3/4] w-full overflow-hidden md:aspect-auto md:h-[calc(100%-3rem)]">
             <Image
-              src="/images/cradle/overview.png"
+              src="/images/cradle/usage-4.jpg"
               alt="Cradle underwater"
               fill
               unoptimized
@@ -46,21 +73,26 @@ function OverviewSection() {
         </ScrollReveal>
 
         {/* Right: content */}
-        <div className="flex w-full flex-col justify-center px-6 py-10 sm:px-10 sm:py-16 md:w-[60%]">
+        <div className="flex w-full flex-col justify-center pt-5 pb-10 sm:pt-6 sm:pb-12 sm:pl-10 md:w-[60%] md:justify-start md:pt-3">
           <ScrollReveal>
-            <h2 className="font-serif text-6xl font-normal text-[#2C5F5C]">
-              cradle
-            </h2>
+            <Image
+              src="/Logos/Cradle Logo Colour.svg"
+              alt="Cradle"
+              width={232}
+              height={85}
+              unoptimized
+              className="h-auto w-80 sm:w-[28rem]"
+            />
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <p className="mt-5 text-xl leading-relaxed text-charcoal">
+            <p className="mt-4 text-2xl leading-snug text-charcoal">
               {cradleContent.tagline}
             </p>
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <p className="mt-8 text-xl leading-relaxed text-charcoal">
+            <p className="mt-10 text-2xl leading-relaxed text-charcoal">
               It does so in{" "}
               <strong className="font-bold">three steps:</strong>
             </p>
@@ -85,7 +117,7 @@ function OverviewSection() {
                   <p className="mt-1 flex-1 text-sm leading-relaxed text-charcoal/80">
                     {step.description}
                   </p>
-                  <hr className="mt-6 border-charcoal/20" />
+                  <hr className="mt-6 border-t-2 border-charcoal/40" />
                 </div>
               </ScrollReveal>
             ))}
@@ -97,9 +129,9 @@ function OverviewSection() {
 }
 
 const problemImages = [
-  "/images/cradle/problem1.png",
-  "/images/cradle/problem2.png",
-  "/images/cradle/problem3.png",
+  "/images/cradle/problem1.jpg",
+  "/images/cradle/problem2.jpg",
+  "/images/cradle/problem3.jpg",
 ];
 
 const problemCaptions: { bold: string; rest: string }[] = [
@@ -126,11 +158,11 @@ function ProblemSection() {
             </h2>
           </ScrollReveal>
 
-          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
             {problemCaptions.map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.12}>
                 <div className="flex flex-col">
-                  <div className="relative aspect-square w-full overflow-hidden">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
                     <Image
                       src={problemImages[i]}
                       alt={item.bold}
@@ -139,7 +171,7 @@ function ProblemSection() {
                       className="object-cover"
                     />
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-charcoal/90">
+                  <p className="mt-4 text-sm leading-relaxed text-charcoal/90">
                     <strong className="font-bold">{item.bold}</strong>
                     {item.rest}
                   </p>
@@ -173,7 +205,7 @@ function ProblemSection() {
               </ul>
             </div>
 
-            <div className="mt-8 border-t border-charcoal/10 pt-8">
+            <div className="mt-10">
               <h3 className="text-4xl font-bold text-charcoal">The Market</h3>
             </div>
           </div>
@@ -185,20 +217,20 @@ function ProblemSection() {
 
 function ProcessSection() {
   return (
-    <section className="bg-grey-light">
+    <section className="bg-white pt-20">
       <Image
-        src="/images/cradle/process-1.png"
+        src="/images/cradle/process-1.jpg"
         alt="Cradle process timeline part 1"
-        width={1400}
-        height={800}
+        width={3000}
+        height={1687}
         unoptimized
         className="block h-auto w-full"
       />
       <Image
-        src="/images/cradle/process-2.png"
+        src="/images/cradle/process-2.jpg"
         alt="Cradle process timeline part 2"
-        width={1400}
-        height={800}
+        width={3000}
+        height={1687}
         unoptimized
         className="block h-auto w-full"
       />
@@ -208,76 +240,72 @@ function ProcessSection() {
 
 function ProductDetailSection() {
   return (
-    <ScrollReveal>
-      <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
-        <Image
-          src="/images/cradle/product-detail.png"
-          alt="Cradle product detail"
-          fill
-          unoptimized
-          className="object-cover"
-        />
-        <div className="absolute left-4 right-4 top-4 flex flex-col gap-4 sm:left-10 sm:right-10 sm:top-10 sm:flex-row sm:items-start sm:gap-6">
-          <p className="max-w-[260px] shrink-0 text-xs font-bold uppercase leading-relaxed tracking-wider text-white sm:text-sm">
-            {cradleContent.productDetail.left}
-          </p>
-          <div className="mt-[0.5em] hidden h-px flex-1 bg-white opacity-80 sm:block" />
-          <p className="max-w-[320px] shrink-0 text-right text-xs font-bold uppercase leading-relaxed tracking-wider text-white sm:text-sm">
-            {cradleContent.productDetail.right}
-          </p>
-        </div>
+    <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
+      <Image
+        src="/images/cradle/product-detail.jpg"
+        alt="Cradle product detail"
+        fill
+        unoptimized
+        className="object-cover"
+      />
+      <div className="absolute inset-x-0 top-4 mx-auto flex max-w-7xl flex-col gap-4 px-6 sm:top-10 sm:flex-row sm:items-start sm:gap-6">
+        <p className="text-stroke-bold max-w-[260px] shrink-0 font-label text-xs font-bold uppercase leading-relaxed tracking-wider text-white sm:text-sm">
+          {cradleContent.productDetail.left}
+        </p>
+        <div className="mt-[0.5em] hidden h-px flex-1 bg-white opacity-80 sm:block" />
+        <p className="text-stroke-bold max-w-[320px] shrink-0 text-left sm:text-right font-label text-xs font-bold uppercase leading-relaxed tracking-wider text-white sm:text-sm">
+          {cradleContent.productDetail.right}
+        </p>
       </div>
-    </ScrollReveal>
+    </div>
   );
 }
 
 function PackagingSection() {
   return (
-    <ScrollReveal>
-      <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
-        <Image
-          src="/images/cradle/packaging.png"
-          alt="Cradle packaging detail"
-          fill
-          unoptimized
-          className="object-cover"
-        />
-        <div className="absolute bottom-4 left-4 right-4 flex flex-col gap-4 sm:bottom-10 sm:left-10 sm:right-10 sm:flex-row sm:items-end sm:gap-6">
-          <p className="max-w-[260px] shrink-0 text-xs font-bold uppercase leading-relaxed tracking-wider text-white sm:text-sm">
-            {cradleContent.packaging.left}
-          </p>
-          <div className="mb-[0.5em] hidden h-px flex-1 bg-white opacity-80 sm:block" />
-          <p className="max-w-[320px] shrink-0 text-right text-xs font-bold uppercase leading-relaxed tracking-wider text-white sm:text-sm">
-            {cradleContent.packaging.right}
-          </p>
-        </div>
+    <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/9" }}>
+      <Image
+        src="/images/cradle/packaging.jpg"
+        alt="Cradle packaging detail"
+        fill
+        unoptimized
+        className="object-cover"
+      />
+      <div className="absolute inset-x-0 bottom-4 mx-auto flex max-w-7xl flex-col gap-4 px-6 sm:bottom-10 sm:flex-row sm:items-end sm:gap-6">
+        <p className="text-stroke-bold max-w-[260px] shrink-0 font-label text-xs font-bold uppercase leading-relaxed tracking-wider text-white sm:text-sm">
+          {cradleContent.packaging.left}
+        </p>
+        <div className="mb-[0.5em] hidden h-px flex-1 bg-white opacity-80 sm:block" />
+        <p className="text-stroke-bold max-w-[320px] shrink-0 text-left sm:text-right font-label text-xs font-bold uppercase leading-relaxed tracking-wider text-white sm:text-sm">
+          {cradleContent.packaging.right}
+        </p>
       </div>
-    </ScrollReveal>
+    </div>
   );
 }
 
 const usageImages = [
-  "/images/cradle/usage-1.png",
-  "/images/cradle/usage-2.png",
-  "/images/cradle/usage-3.png",
-  "/images/cradle/usage-4.png",
-  "/images/cradle/usage-5.png",
-  "/images/cradle/usage-6.png",
+  "/images/cradle/usage-1.jpg",
+  "/images/cradle/usage-2.jpg",
+  "/images/cradle/usage-3.jpg",
+  "/images/cradle/usage-4.jpg",
+  "/images/cradle/usage-5.jpg",
+  "/images/cradle/usage-6.jpg",
 ];
 
 function UsageScenarioSection() {
   return (
-    <section className="bg-white py-20">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="flex min-h-screen flex-col justify-center bg-white py-20">
+      <div className="mx-auto w-full max-w-7xl px-6">
         <ScrollReveal>
-          <h2 className="mb-10 text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="mb-12 text-4xl font-bold tracking-tight md:text-5xl">
             {cradleContent.usageScenario.heading}
           </h2>
         </ScrollReveal>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-6">
           {cradleContent.usageScenario.steps.map((caption, i) => (
             <ScrollReveal key={i} delay={i * 0.08}>
-              <div className="relative aspect-[3/4] w-full overflow-hidden">
+              <div className="relative aspect-[9/16] w-full overflow-hidden">
                 <Image
                   src={usageImages[i]}
                   alt={caption}
@@ -286,7 +314,7 @@ function UsageScenarioSection() {
                   className="object-cover"
                 />
               </div>
-              <p className="mt-3 text-xs font-bold uppercase leading-relaxed tracking-wide text-charcoal">
+              <p className="mt-3 font-label text-xs font-bold uppercase leading-relaxed tracking-wide text-charcoal">
                 {caption}
               </p>
             </ScrollReveal>
@@ -299,25 +327,23 @@ function UsageScenarioSection() {
 
 function CircularSystemSection() {
   return (
-    <section className="bg-white py-20">
-      <ScrollReveal>
-        <Image
-          src="/images/cradle/circular-diagram.png"
-          alt="Circular design system diagram"
-          width={1200}
-          height={800}
-          unoptimized
-          className="h-auto w-full"
-        />
-      </ScrollReveal>
+    <section className="bg-white">
+      <Image
+        src="/images/cradle/circular-diagram.jpg"
+        alt="Circular design system diagram"
+        width={2560}
+        height={1440}
+        unoptimized
+        className="block h-auto w-full"
+      />
     </section>
   );
 }
 
 const designWeekImages = [
-  "/images/cradle/design-week-1.png",
-  "/images/cradle/design-week-2.png",
-  "/images/cradle/design-week-3.png",
+  "/images/cradle/design-week-1.jpg",
+  "/images/cradle/design-week-2.jpg",
+  "/images/cradle/design-week-3.jpg",
 ];
 
 function DesignWeekSection() {
@@ -338,7 +364,7 @@ function DesignWeekSection() {
                 className="object-cover"
               />
             </div>
-            <h2 className="mt-6 shrink-0 text-4xl font-bold leading-tight tracking-tight text-charcoal md:text-5xl">
+            <h2 className="mt-6 shrink-0 text-4xl font-bold leading-tight tracking-tight text-charcoal md:text-[2.6rem]">
               {cradleContent.designWeek.heading}
             </h2>
           </ScrollReveal>
@@ -375,7 +401,10 @@ function VideoSection() {
   return (
     <section className="bg-charcoal">
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <VideoPlaceholder thumbnail="/images/cradle/video-placeholder.png" />
+        <ProjectVideo
+          src="/videos/cradle.mp4"
+          poster="/images/cradle/video-poster.jpg"
+        />
       </div>
     </section>
   );

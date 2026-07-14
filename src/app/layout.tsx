@@ -1,18 +1,30 @@
 import type { Metadata } from "next";
-import { Inter, DM_Serif_Display } from "next/font/google";
+import localFont from "next/font/local";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
+const neueHaas = localFont({
+  variable: "--font-neue-haas",
+  src: [
+    { path: "../fonts/NeueHaasDisplayLight.ttf", weight: "300", style: "normal" },
+    { path: "../fonts/NeueHaasDisplayRoman.ttf", weight: "400", style: "normal" },
+    { path: "../fonts/NeueHaasDisplayMediu.ttf", weight: "500", style: "normal" },
+    { path: "../fonts/NeueHaasDisplayMediu.ttf", weight: "600", style: "normal" },
+    { path: "../fonts/NeueHaasDisplayMediu.ttf", weight: "700", style: "normal" },
+  ],
 });
 
-const dmSerif = DM_Serif_Display({
-  variable: "--font-dm-serif",
-  weight: "400",
-  subsets: ["latin"],
+const shibui = localFont({
+  variable: "--font-shibui",
+  src: [{ path: "../fonts/ShibuiBold.ttf", weight: "700", style: "normal" }],
+});
+
+const soehneBreit = localFont({
+  variable: "--font-soehne-breit",
+  src: [
+    { path: "../fonts/SoehneBreitHalbfett.ttf", weight: "600", style: "normal" },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${dmSerif.variable} antialiased`}
+      className={`${neueHaas.variable} ${shibui.variable} ${soehneBreit.variable} antialiased`}
     >
       <body className="min-h-screen">
         <Navbar />

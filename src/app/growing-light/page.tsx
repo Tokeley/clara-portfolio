@@ -3,55 +3,62 @@
 import Image from "next/image";
 import { growingLightContent } from "@/lib/content";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { FullBleedImage } from "@/components/FullBleedImage";
-import { VideoPlaceholder } from "@/components/VideoPlaceholder";
+import { ProjectVideo } from "@/components/ProjectVideo";
 import { ProjectNav } from "@/components/Footer";
 
 function HeroSection() {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <Image
-        src="/images/growing-light/1.png"
+        src="/images/growing-light/1.jpg"
         alt="Growing Light hero"
         fill
         priority
         unoptimized
         className="object-cover"
       />
+      <div className="absolute inset-x-0 top-28 mx-auto max-w-7xl px-6 lg:top-36">
+        <Image
+          src="/Logos/Growing Light Logo Colour.svg"
+          alt="Growing Light"
+          width={232}
+          height={85}
+          unoptimized
+          className="h-auto w-[clamp(9rem,18vw,20.8rem)]"
+        />
+      </div>
     </section>
   );
 }
 
 const stageImages = [
-  { src: "/images/growing-light/stage-1.png", alt: "Growing Light — stage 1" },
-  { src: "/images/growing-light/stage-2.png", alt: "Growing Light — stage 2" },
-  { src: "/images/growing-light/stage-3.png", alt: "Growing Light — stage 3" },
+  { src: "/images/growing-light/stage-1.jpg", alt: "Growing Light — stage 1" },
+  { src: "/images/growing-light/stage-2.jpg", alt: "Growing Light — stage 2" },
+  { src: "/images/growing-light/stage-3.jpg", alt: "Growing Light — stage 3" },
 ];
 
 function OverviewSection() {
   return (
-    <section className="bg-cream py-16">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 md:flex-row md:items-stretch">
-        {/* Left: large close-up portrait */}
-        <ScrollReveal className="w-full md:w-[46%]">
-          <div className="relative h-full min-h-[320px] w-full overflow-hidden sm:min-h-[520px]">
-            <Image
-              src="/images/growing-light/overview-closeup.png"
-              alt="Growing Light — close-up"
-              fill
-              unoptimized
-              className="object-cover object-center"
-            />
-          </div>
+    <section className="overflow-hidden bg-cream">
+      <div className="flex min-h-[520px] flex-col md:flex-row">
+        {/* Left: full-bleed close-up */}
+        <ScrollReveal className="relative min-h-[320px] w-full shrink-0 md:w-[46%]">
+          <Image
+            src="/images/growing-light/overview-closeup.jpg"
+            alt="Growing Light — close-up"
+            fill
+            unoptimized
+            className="object-cover object-center"
+          />
         </ScrollReveal>
 
-        {/* Right: thumbnails | logo/text side by side */}
-        <div className="flex w-full flex-col gap-6 sm:flex-row md:w-[54%]">
+        {/* Right: thumbnails + logo/text */}
+        <div className="flex flex-1 flex-col gap-8 px-6 py-10 sm:flex-row sm:items-stretch sm:gap-8 sm:px-10 sm:py-12">
           {/* Three numbered stage thumbnails */}
-          <div className="flex w-full shrink-0 flex-col gap-3 sm:w-[62%]">
+          <ScrollReveal className="flex shrink-0 flex-col gap-4">
             {stageImages.map(({ src, alt }, i) => (
-              <div key={i} className="relative">
-                <div className="relative aspect-video w-full overflow-hidden bg-grey-light">
+              <div key={i} className="relative w-full overflow-hidden bg-grey-light sm:w-72">
+                <div className="relative aspect-[3/2] w-full">
                   <Image
                     src={src}
                     alt={alt}
@@ -60,32 +67,37 @@ function OverviewSection() {
                     className="object-cover"
                   />
                 </div>
+                <span className="absolute left-3 top-3 text-xl font-bold text-white">
+                  {i + 1}
+                </span>
               </div>
             ))}
-          </div>
+          </ScrollReveal>
 
-          {/* Logo + description */}
-          <div className="flex flex-col gap-4">
-            <Image
-              src="/images/growing-light/logo.png"
-              alt="Growing Light"
-              width={240}
-              height={120}
-              unoptimized
-              className="h-auto w-full max-w-[240px]"
-            />
-            <div className="flex flex-col gap-3">
-              <p className="text-sm leading-relaxed text-charcoal/75">
-                {growingLightContent.description}
-              </p>
-              <p className="text-sm leading-relaxed text-charcoal/75">
-                {growingLightContent.descriptionExtended}
-              </p>
-              <p className="text-sm leading-relaxed text-charcoal/75">
-                {growingLightContent.descriptionExtra}
-              </p>
+          {/* Logo + description, bottom-aligned with thumbnails */}
+          <ScrollReveal delay={0.15} className="flex-1">
+            <div className="flex h-full max-w-xs flex-col justify-end pb-1">
+              <Image
+                src="/Logos/Growing Light Logo Colour.svg"
+                alt="Growing Light"
+                width={240}
+                height={120}
+                unoptimized
+                className="mb-6 h-28 w-auto self-end"
+              />
+              <div className="flex flex-col gap-3">
+                <p className="max-w-xs text-base font-medium leading-relaxed text-charcoal/80">
+                  {growingLightContent.description}
+                </p>
+                <p className="max-w-xs text-base font-medium leading-relaxed text-charcoal/80">
+                  {growingLightContent.descriptionExtended}
+                </p>
+                <p className="max-w-xs text-base font-medium leading-relaxed text-charcoal/80">
+                  {growingLightContent.descriptionExtra}
+                </p>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
@@ -100,9 +112,9 @@ function renderBold(text: string) {
 }
 
 const briefImages = [
-  { src: "/images/growing-light/brief-1.png", alt: "Light as a design medium" },
-  { src: "/images/growing-light/brief-2.png", alt: "Human interaction and responsiveness" },
-  { src: "/images/growing-light/brief-3.png", alt: "Arduino circuitry and sensors" },
+  { src: "/images/growing-light/brief-1.jpg", alt: "Light as a design medium" },
+  { src: "/images/growing-light/brief-2.jpg", alt: "Human interaction and responsiveness" },
+  { src: "/images/growing-light/brief-3.jpg", alt: "Arduino circuitry and sensors" },
 ];
 
 function BriefSection() {
@@ -118,7 +130,7 @@ function BriefSection() {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             {growingLightContent.brief.items.map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>
-                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                <div className="relative aspect-square w-full overflow-hidden">
                   <Image
                     src={briefImages[i].src}
                     alt={briefImages[i].alt}
@@ -135,7 +147,7 @@ function BriefSection() {
           </div>
         </div>
         <ScrollReveal direction="right" delay={0.2}>
-          <div className="rounded-sm bg-cream p-8">
+          <div className="flex h-full flex-col rounded-sm bg-cream p-8">
             {growingLightContent.brief.sidebar.map((para, i) => (
               <p
                 key={i}
@@ -144,7 +156,7 @@ function BriefSection() {
                 {renderBold(para)}
               </p>
             ))}
-            <h3 className="mt-8 text-right text-5xl font-bold tracking-tight text-charcoal md:text-6xl">Research</h3>
+            <h3 className="mt-auto pt-8 text-right text-5xl font-bold tracking-tight text-charcoal md:text-6xl">Research</h3>
           </div>
         </ScrollReveal>
       </div>
@@ -154,20 +166,20 @@ function BriefSection() {
 
 function ProcessSection() {
   return (
-    <section className="bg-grey-light">
+    <section className="bg-white">
       <Image
-        src="/images/growing-light/4.png"
+        src="/images/growing-light/4.jpg"
         alt="Growing Light process timeline part 1"
-        width={1400}
-        height={800}
+        width={3000}
+        height={1687}
         unoptimized
         className="h-auto w-full"
       />
       <Image
-        src="/images/growing-light/5.png"
+        src="/images/growing-light/5.jpg"
         alt="Growing Light process timeline part 2"
-        width={1400}
-        height={800}
+        width={3000}
+        height={1687}
         unoptimized
         className="h-auto w-full"
       />
@@ -176,37 +188,36 @@ function ProcessSection() {
 }
 
 const usageScenarioImages = [
-  "/images/growing-light/usage-1.png",
-  "/images/growing-light/usage-2.png",
-  "/images/growing-light/usage-3.png",
-  "/images/growing-light/usage-4.png",
-  "/images/growing-light/usage-5.png",
-  "/images/growing-light/usage-6.png",
+  "/images/growing-light/usage-1.jpg",
+  "/images/growing-light/usage-2.jpg",
+  "/images/growing-light/usage-3.jpg",
+  "/images/growing-light/usage-4.jpg",
+  "/images/growing-light/usage-5.jpg",
+  "/images/growing-light/usage-6.jpg",
 ];
 
 function UsageScenarioSection() {
   return (
-    <section className="bg-white py-20">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="flex min-h-screen flex-col justify-center bg-white py-20">
+      <div className="mx-auto w-full max-w-7xl px-6">
         <ScrollReveal>
-          <h2 className="mb-12 text-4xl font-bold">
+          <h2 className="mb-12 text-4xl font-bold tracking-tight md:text-5xl">
             {growingLightContent.usageScenario.heading}
           </h2>
         </ScrollReveal>
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-6">
           {growingLightContent.usageScenario.steps.map((caption, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
-              <div className="aspect-[3/4] w-full overflow-hidden bg-neutral-800">
+              <div className="relative aspect-[9/16] w-full overflow-hidden bg-neutral-800">
                 <Image
                   src={usageScenarioImages[i]}
                   alt={caption}
-                  width={300}
-                  height={400}
+                  fill
                   unoptimized
-                  className="h-full w-full object-cover"
+                  className="object-cover"
                 />
               </div>
-              <p className="mt-3 text-xs font-bold uppercase leading-tight tracking-wider">
+              <p className="mt-3 font-label text-xs font-bold uppercase leading-relaxed tracking-wider">
                 {caption}
               </p>
             </ScrollReveal>
@@ -220,25 +231,29 @@ function UsageScenarioSection() {
 function GallerySection() {
   return (
     <>
-      <FullBleedImage
-        src="/images/growing-light/7.png"
+      <Image
+        src="/images/growing-light/7.jpg"
         alt="Growing Light full view"
+        width={2560}
+        height={1440}
+        unoptimized
+        className="block h-auto w-full"
       />
-      <section className="bg-black py-0">
-        <ScrollReveal>
-          <Image
-            src="/images/growing-light/8.png"
-            alt="Growing Light close-up details"
-            width={1400}
-            height={600}
-            unoptimized
-            className="h-auto w-full"
-          />
-        </ScrollReveal>
-      </section>
-      <FullBleedImage
-        src="/images/growing-light/9.png"
+      <Image
+        src="/images/growing-light/8.jpg"
+        alt="Growing Light close-up details"
+        width={2560}
+        height={1440}
+        unoptimized
+        className="block h-auto w-full"
+      />
+      <Image
+        src="/images/growing-light/9.jpg"
         alt="Growing Light flowers close-up"
+        width={2560}
+        height={1440}
+        unoptimized
+        className="block h-auto w-full"
       />
     </>
   );
@@ -248,7 +263,10 @@ function VideoSection() {
   return (
     <section className="bg-charcoal">
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <VideoPlaceholder thumbnail="/images/growing-light/video-placeholder.png" />
+        <ProjectVideo
+          src="/videos/growing-light.mp4"
+          poster="/images/growing-light/video-poster.jpg"
+        />
       </div>
     </section>
   );

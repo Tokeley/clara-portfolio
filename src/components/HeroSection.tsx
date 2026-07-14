@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import { siteContent } from "@/lib/content";
 
 const strips = [
-  { src: "/images/cradle/hero.png", alt: "Cradle project" },
-  { src: "/images/tilt/1.png", alt: "Tilt project" },
-  { src: "/images/growing-light/1.png", alt: "Growing Light project" },
+  { src: "/images/cradle/hero.jpg", alt: "Cradle project" },
+  { src: "/images/tilt/1.jpg", alt: "Tilt project" },
+  { src: "/images/growing-light/1.jpg", alt: "Growing Light project" },
 ];
 
 export function HeroSection() {
@@ -28,7 +28,7 @@ export function HeroSection() {
                 alt={strip.alt}
                 fill
                 unoptimized
-                className="object-cover"
+                className={`object-cover ${i === 2 ? "object-[65%_center]" : ""}`}
               />
             </motion.div>
           ))}

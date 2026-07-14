@@ -57,7 +57,7 @@ export const siteContent = {
       subtitle: "Cradle | First Place",
       bullets: [
         "Awarded first place in the Lexus Design awards for my final capstone project",
-        "Displayed Cradle at New Zealand Design week 2026",
+        "Displayed Cradle at **New Zealand Design week 2026**",
       ],
     },
     {
@@ -76,7 +76,7 @@ export const siteContent = {
       title: "CRADLE",
       slug: "cradle",
       product: "KELP REGENERATION SYSTEM",
-      material: "CONCRETE / PRESSED / ALUMINIUM",
+      material: "CONCRETE / PRESSED ALUMINIUM",
       processes: "MARKET RESEARCH, DESIGN SYSTEM",
       date: "2025",
     },
@@ -151,10 +151,8 @@ export const cradleContent = {
     papers: [
       "Urchinomics: Kelp restoration through urchin economy.",
       "Testing the efficacy of sea urchin exclusion methods for restoring kelp by Sharma et al.",
-      "Kelp forests versus urchin barrens: A comparison of ecosystem functions and services provided by two alternative stable marine habitats by Blain et al.",
       "Consumer preferences for seafood sustainability attributes: A comparative study of 12 markets by Schrobback et al.",
       "Aquaculture investment opportunities in New Zealand by New Zealand Trade and Enterprise.",
-      "Morphological and mechanical tube feet plasticity among populations of sea urchin (Strongylocentrotus purpuratus) by Narvaez et al.",
       "Assessing the carbon storage value of kelp forest restoration in the Hauraki Gulf Marine Park, New Zealand: Lessons from no-take Marine Protected Areas by Qu et al.",
     ],
   },
